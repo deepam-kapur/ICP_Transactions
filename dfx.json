@@ -2,13 +2,24 @@
   "canisters": {
     "icp_transactions_backend": {
       "main": "src/icp_transactions_backend/main.mo",
-      "type": "motoko"
+      "type": "motoko",
+      "dependencies": ["icp_ledger_canister"]
+    },
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/778d2bb870f858952ca9fbe69324f9864e3cf5e7/rs/rosetta-api/icp_ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/778d2bb870f858952ca9fbe69324f9864e3cf5e7/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      }
     }
   },
   "defaults": {
     "build": {
       "args": "",
-      "packtool": ""
+      "packtool": "mops sources"
     }
   },
   "output_env_file": ".env",
